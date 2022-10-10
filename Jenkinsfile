@@ -1,8 +1,6 @@
 pipeline {
   agent any
-  tools {
-    maven 'Maven 3.2.1' 
-  }
+
   stages {
     stage('Pull Git') {
       steps {
