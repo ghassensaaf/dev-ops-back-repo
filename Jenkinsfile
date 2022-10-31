@@ -5,7 +5,7 @@ pipeline {
     stage('Pull Git') {
       steps {
         echo 'Pulling ... ';
-        git branch: 'ahmed', credentialsId: 'fakhfakhahmed', url: 'https://github.com/ghassensaaf/dev-ops-back-repo.git';
+        git branch: 'ahmed', credentialsId: 'github', url: 'https://github.com/ghassensaaf/dev-ops-back-repo.git';
       }
     }
     stage('MVN Package') {
