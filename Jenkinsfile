@@ -6,10 +6,7 @@ pipeline {
     stages {
         stage('Git') {
             steps {
-
-                git branch: 'ons', url: 'https://github.com/ghassensaaf/dev-ops-back-repo.git',
-                credentialsId : '33c04f0b-acb3-488e-80de-00a29b1c504f'
-
+                git branch: 'ons', credentialsId: '28fae579-cf0e-4594-b0af-3e8732bd44c8', url: 'https://github.com/ghassensaaf/dev-ops-back-repo.git'
             }
 
 
