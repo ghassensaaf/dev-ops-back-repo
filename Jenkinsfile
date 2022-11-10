@@ -2,15 +2,9 @@ pipeline {
     agent any
   
     stages {
-        stage("init git") {
-            steps {
-              echo 'initializing the app...'
-               echo 'Pulling from Git ...';
-              git branch : 'nadhir',
-              url : 'https://github.com/ghassensaaf/dev-ops-back-repo.git';
-
-            }
-        }
+        
+            
+        
         stage("Maven build") {
             steps {
              sh "mvn clean install"
