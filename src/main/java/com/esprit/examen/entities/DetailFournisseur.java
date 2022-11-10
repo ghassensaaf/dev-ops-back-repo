@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,19 +20,18 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Reglement implements Serializable{
+public class DetailFournisseur implements Serializable{
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idReglement;
-	private float montantPaye;
-	private float montantRestant;
-	private Boolean payee;
+	private Long idDetailFournisseur;
+	private String email;
 	@Temporal(TemporalType.DATE)
-	private Date dateReglement;
-	@ManyToOne
+	private Date dateDebutCollaboration;
+	private String adresse;
+	private String matricule;
+	@OneToOne(mappedBy="detailFournisseur")
 	@JsonIgnore
-	private Facture facture;
+	private Fournisseur fournisseur;
 	
 }
