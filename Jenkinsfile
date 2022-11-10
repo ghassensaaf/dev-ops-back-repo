@@ -8,11 +8,11 @@ pipeline {
         git branch: 'ghassen', credentialsId: 'Github', url: 'https://github.com/ghassensaaf/dev-ops-back-repo.git';
       }
     }
-    stage('MVN Package') {
+    stage('MVN clean install') {
       steps {
         sh 'mvn --version';
         sh 'java -version';
-        sh 'mvn package -e';
+        sh 'mvn clean install -e';
       }
     }
   }
