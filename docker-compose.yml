@@ -1,19 +1,28 @@
+version: '3'
+
 services: 
+  mysqldb:
+    container_name: mysql-db-devops
+    image: mysql/mysql-server:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tpachato
+      MYSQL_USER: superuser
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_HOST: '%'
+    ports: 
+      - 3306
+    restart: always
+
   #config service
   backend-devops:
-    build:
-     context: ./
-    ports: 
-      - 8081:8081
+    container_name: backend-devops
     depends_on:
       - mysqldb
-    container_name: backend-devops
-
-  mysqldb:
-    image: mysql:5.7
-    container_name: mysql-db-devops
+    build:
+     context: .
+    restart: always
+    links:
+      - mysql-docker
     ports: 
-      - 3306:3306   
-    environment:
-      - MYSQL_ROOT_PASSWORD: root
-      - MYSQL_DATABASE: tpachato 
+      - 8081:8081
