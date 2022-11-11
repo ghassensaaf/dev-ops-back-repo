@@ -8,25 +8,27 @@ pipeline {
         git branch: 'ahmed', credentialsId: 'a9553f33-b2c3-4eff-94c1-a6dc9703d28d', url: 'https://github.com/ghassensaaf/dev-ops-back-repo.git';
       }
     }
-    stage('MVN Package') {
+    stage('MVN Clean') {
       steps {
-        sh 'mvn --version';
-        sh 'java -version';
-        sh 'mvn package -e';
+        sh 'mvn clean';
+      }
+      stage('MVN Compile') {
+      steps {
+        sh 'mvn compile';
       }
     }
 
-    stage('DOCKER Compose') {
+  stage('Maven SonarQube') {
+            steps {
+               sh 'mvn clean package sonar:sonar -Dsonar.login=admin -Dsonar.password=root'
+            }
+        }
+
+     stage('DOCKER Compose') {
       steps {
         echo 'docker compose stage';
         sh 'docker-compose up -d'
       }
-    }
-
-    stage('SonarQube analysis ') {
-    steps {
-        sh 'mvn clean package sonar:sonar -Dsonar.login=admin -Dsonar.password=root'
-    }
     }
   }
 }
