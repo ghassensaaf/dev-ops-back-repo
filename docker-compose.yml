@@ -3,9 +3,13 @@ version: '3'
 services: 
 
   sonarqube:
-    image: sonarqube
+    image: sonarqube:8.9.7-community
+    expose:
+      - 9000
     ports:
       - "9000:9000"
+    networks:
+      - sonarnet
     environment:
       - sonar.jdbc.url=jdbc:mysql://mysqldb:3306/tpachato?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
       - sonar.jdbc.username=root
@@ -15,14 +19,14 @@ services:
       - sonarqube_data:/opt/sonarqube/data
       - sonarqube_extensions:/opt/sonarqube/extensions
       - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
-    links:
-      - mysqldb
 
 
   mysqldb:
     container_name: mysqldb1
     image: mysql:5.6
     restart: always
+    networks:
+      - sonarnet
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: tpachato
@@ -33,7 +37,6 @@ services:
       - 3307:3306    
     volumes:
       - /home/mysql/data:/var/lib/mysql --user 1000
-
 
   app:
     build: .
@@ -52,6 +55,8 @@ services:
     links:
       - mysqldb
 
+networks:
+  sonarnet:
 
 volumes:
   sonarqube_conf:
