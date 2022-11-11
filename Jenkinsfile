@@ -22,5 +22,11 @@ pipeline {
         sh 'docker-compose up -d'
       }
     }
+
+    stage('SonarQube analysis ') {
+    steps {
+        sh 'mvn clean package sonar:sonar -Dsonar.login=admin -Dsonar.password=root'
+    }
+    }
   }
 }
