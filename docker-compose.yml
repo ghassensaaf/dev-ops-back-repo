@@ -15,6 +15,8 @@ services:
       - sonarqube_data:/opt/sonarqube/data
       - sonarqube_extensions:/opt/sonarqube/extensions
       - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+    links:
+      - mysqldb
 
 
   mysqldb:
@@ -33,8 +35,7 @@ services:
       - 3307:3306    
     volumes:
       - /home/mysql/data:/var/lib/mysql --user 1000
-    links:
-      - mysqldb
+
 
   app:
     build: .
