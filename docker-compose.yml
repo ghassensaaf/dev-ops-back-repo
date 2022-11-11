@@ -5,23 +5,15 @@ services:
      context: ./
     ports: 
       - 8081:8081
-    networks:
-      - devops
     depends_on:
       - mysqldb
     container_name: backend-devops
 
   mysqldb:
     image: mysql:5.7
-    container_name: mysql-db-devops 
-    networks:
-      - devops 
+    container_name: mysql-db-devops
     ports: 
       - 3306:3306   
     environment:
       - MYSQL_ROOT_PASSWORD: root
       - MYSQL_DATABASE: tpachato 
-    
-networks:
-    devops:
-      driver: bridge  
