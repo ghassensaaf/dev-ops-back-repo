@@ -22,8 +22,6 @@ services:
     container_name: mysqldb1
     image: mysql:5.6
     restart: always
-    networks:
-      - sonarnet
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: tpachato
@@ -52,11 +50,9 @@ services:
     links:
       - mysqldb
 
-networks:
-  sonarnet:
-
 volumes:
-  sonarqube_conf:
-  sonarqube_data:
-  sonarqube_extensions:
-  sonarqube_bundled-plugins:
+  SonarQube_data:
+  SonarQube_extensions:
+  SonarQube_logs:
+  postgresql:
+  postgresql_data:
