@@ -13,5 +13,11 @@ pipeline {
                sh 'mvn package'
             }
         }
+        stage('docker compose'){
+            steps{
+                echo 'docker compose stage';
+                sh 'docker-compose up -d';
+            }
+        }
     }
 }
