@@ -2,27 +2,30 @@ version: '3'
 
 services: 
   mysqldb:
-    container_name: mysql-db-devops
-    image: mysql/mysql-server:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: tpachato
-      MYSQL_USER: superuser
-      MYSQL_PASSWORD: secret
-      MYSQL_ROOT_HOST: '%'
-    ports: 
-      - 3306
-    restart: always
+   image: mysql:5.7
+   restart: unless-stopped
+   environment:
+     - MYSQL_DATABASE=tpachato
+   ports:
+      - "3306:3306"
+   volumes:
+      - db:/var/lib/mysql
 
-  #config service
-  backend-devops:
-    container_name: backend-devops
-    depends_on:
-      - mysqldb
-    build:
-     context: .
-    restart: always
-    links:
-      - mysql-docker
-    ports: 
-      - 8081:8081
+  app:
+   depends_on:
+     - mysqldb
+   build: .
+   restart: on-failure
+   ports:
+     - "8089:8089"
+   environment:
+     SPRING_APPLICATION_JSON: '{
+       "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/tpachato?useSSL=false",
+       "spring.datasource.username" : "root",
+       "spring.datasource.password" : "root",
+       "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+       "spring.jpa.hibernate.ddl-auto" : "update"}'
+   stdin_open: true
+   tty: true
+volumes:
+ db:
