@@ -15,12 +15,13 @@ services:
     image: mysql:5.7
     container_name: mysql-db-devops 
     networks:
-        - devops 
+      - devops 
     ports: 
-       - 3306:3306   
+      - 3306:3306   
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: tpachato 
+      - MYSQL_ROOT_PASSWORD: root
+      - MYSQL_DATABASE: tpachato 
     
 networks:
     devops:
+      driver: bridge  
