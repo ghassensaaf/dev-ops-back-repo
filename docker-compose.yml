@@ -9,7 +9,7 @@ services:
     
 
   mysql:
-    image: mysql
+    image: mysql/mysql-server
     #volumes: 
      #  - dbdata:/var/lib/mysql
     #db script
