@@ -1,0 +1,24 @@
+services: 
+  #config service
+  backend-devops:
+    build:
+     context: ./
+    ports: 
+      - 8888:8888
+    container_name: backend-devops
+    
+
+  mysql:
+    image: mysql/mysql-server
+    #volumes: 
+     #  - dbdata:/var/lib/mysql
+    #db script
+    container_name: mysql-db-devops 
+    ports: 
+       - 3306:3306   
+    environment:
+        MYSQL_ROOT_USER: ${MYSQL_ROOT_USER:-root}
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-20202}
+        MYSQL_DATABASE: ${MYSQL_DATABASE:-authDB} 
+        MYSQL_ROOT_HOST: '%'
+        MYSQLDATA: /var/lib/mysql
