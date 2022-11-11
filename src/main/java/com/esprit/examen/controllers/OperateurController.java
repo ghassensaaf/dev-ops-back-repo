@@ -43,8 +43,7 @@ public class OperateurController {
 	public Operateur addOperateur(@RequestBody OperateurDTO op) {
 
 		Operateur ope=mapper.map(op,Operateur.class);
-		Operateur operateur = operateurService.addOperateur(ope);
-		return operateur;
+		return operateurService.addOperateur(ope);
 	}
 
 	// http://localhost:8089/SpringMVC/operateur/remove-operateur/{operateur-id}
