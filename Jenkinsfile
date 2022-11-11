@@ -12,7 +12,13 @@ pipeline {
       steps {
         sh 'mvn --version';
         sh 'java -version';
-        sh 'mvn package -e';
+        sh 'mvn clean install -e';
+      }
+    }
+    stage('DOCKER Compose') {
+      steps {
+        echo 'docker compose stage';
+        sh 'docker compose up -d'
       }
     }
   }
