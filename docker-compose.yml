@@ -34,9 +34,3 @@ services:
     links:
       - mysqldb
 
-volumes:
-  SonarQube_data:
-  SonarQube_extensions:
-  SonarQube_logs:
-  postgresql:
-  postgresql_data:
