@@ -2,7 +2,7 @@ package com.esprit.examen.controllers;
 
 import java.util.Date;
 import java.util.List;
-
+import com.esprit.examen.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -10,8 +10,7 @@ import com.esprit.examen.entities.Facture;
 import com.esprit.examen.services.IFactureService;
 
 import io.swagger.annotations.Api;
-
-
+import org.modelmapper.ModelMapper;
 @RestController
 @Api(tags = "Gestion des factures")
 @RequestMapping("/facture")
@@ -20,6 +19,9 @@ public class FactureRestController {
 
     @Autowired
     IFactureService factureService;
+
+    @Autowired
+    private ModelMapper mapper ;
 
     // http://localhost:8089/SpringMVC/facture/retrieve-all-factures
     @GetMapping("/retrieve-all-factures")
@@ -39,8 +41,9 @@ public class FactureRestController {
     // http://localhost:8089/SpringMVC/facture/add-facture/{fournisseur-id}
     @PostMapping("/add-facture")
     @ResponseBody
-    public Facture addFacture(@RequestBody Facture f) {
-        Facture facture = factureService.addFacture(f);
+    public Facture addFacture(@RequestBody FactureDTO f) {
+        Facture facture=mapper.map(f,Facture.class);
+        Facture fa = factureService.addFacture(facture);
         return facture;
     }
 
