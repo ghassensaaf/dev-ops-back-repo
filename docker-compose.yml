@@ -2,22 +2,6 @@ version: '3'
 
 services: 
 
-  SonarQube:
-    image: sonarqube:8.9.7-community
-    depends_on:
-      - mysqldb
-    environment:
-      SONAR_JDBC_URL: jdbc:mysql://mysqldb:3306/tpachato
-      SONAR_JDBC_USERNAME: root
-      SONAR_JDBC_PASSWORD: root
-    volumes:
-      - SonarQube_data:/opt/SonarQube/data
-      - SonarQube_extensions:/opt/SonarQube/extensions
-      - SonarQube_logs:/opt/SonarQube/logs
-    ports:
-      - "9000:9000"
-
-
   mysqldb:
     container_name: mysqldb1
     image: mysql:5.6
