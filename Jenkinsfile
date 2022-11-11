@@ -8,9 +8,19 @@ pipeline {
             }
         }
         
-        stage('MavenPackage') {
+        stage('MavenClean') {
             steps {
-               sh 'mvn package'
+               sh 'mvn clean'
+            }
+        }
+        stage('MavenCompile') {
+            steps {
+               sh 'mvn compile'
+            }
+        }
+        stage('Maven SonarQube') {
+            steps {
+               sh 'mvn clean package sonar:sonar -Dsonar.login=admin -Dsonar.password=root'
             }
         }
         stage('docker compose'){
