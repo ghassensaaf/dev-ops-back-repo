@@ -43,8 +43,7 @@ public class FactureRestController {
     @ResponseBody
     public Facture addFacture(@RequestBody FactureDTO f) {
         Facture facture=mapper.map(f,Facture.class);
-        Facture fa = factureService.addFacture(facture);
-        return facture;
+        return factureService.addFacture(facture);
     }
 
     /*
