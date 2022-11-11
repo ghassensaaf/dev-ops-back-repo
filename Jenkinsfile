@@ -18,7 +18,7 @@ pipeline {
     stage('DOCKER Compose') {
       steps {
         echo 'docker compose stage';
-        sh 'docker-compose up -d'
+        sh 'sudo docker-compose up -d'
       }
     }
   }
