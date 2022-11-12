@@ -1,7 +1,5 @@
 FROM openjdk:11
 
-ENV JAR_FILE=target/tpAchatProject-1.0.jar
-
-ADD  $JAR_FILE app.jar
+RUN curl -u -o app.jar "http://192.168.1.151:8081/service/rest/v1/search/assets/download?sort=version&repository=maven-releases&maven.groupId=com.esprit.examen&maven.artifactId=tpAchatProject&maven.extension=jar" -L
 
 ENTRYPOINT ["java","-jar","/app.jar"]
