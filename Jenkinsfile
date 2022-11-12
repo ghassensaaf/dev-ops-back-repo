@@ -20,6 +20,11 @@ pipeline {
         sh 'mvn compile ';
       }
     }
+    stage('MVN COMPILE JIB') {
+      steps {
+        sh 'mvn compile jib:build -DsendCredentialsOverHttp=true -Djib.httpTimeout=0';
+      }
+    }
     stage('MVN SONARCUBE') {
       steps {
         sh 'mvn clean package sonar:sonar -Dsonar.login=admin -Dsonar.password=Za3maettal3ou';
