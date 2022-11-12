@@ -17,6 +17,13 @@
 		<java.version>1.8</java.version>
 		<mapper.version>2.4.5</mapper.version>
 	</properties>
+	<distributionManagement>
+		<repository>
+			<id>deploymentRepo</id>
+			<name>Nexus Repository</name>
+			<url>http://localhost:8081/repository/maven-releases/</url>
+		</repository>
+	</distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -137,27 +144,17 @@
 				</dependencies>
 			</plugin>
 			<plugin>
-				<groupId>com.google.cloud.tools</groupId>
-				<artifactId>jib-maven-plugin</artifactId>
-				<version>1.8.0</version>
-				<configuration>
-					<from>
-						<image>openjdk:alpine</image> 
-					</from>
-					<to>
-						<image>localhost:8001/repository/dockerImageRepo/tpachatproject/tags/new</image>
-						<auth>
-							<username>admin</username>
-							<password>Za3maettal3ou</password>
-						</auth>
-					</to>
-					<allowInsecureRegistries>
-						true
-					</allowInsecureRegistries>
-					<sendCredentialsOverHttp>
-						true
-					</sendCredentialsOverHttp>
-				</configuration>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.5.3</version>
+				<executions>
+					<execution>
+						<id>default-deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
