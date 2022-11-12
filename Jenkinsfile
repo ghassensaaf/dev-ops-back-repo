@@ -20,9 +20,9 @@ pipeline {
         sh 'mvn compile ';
       }
     }
-    stage('MVN COMPILE JIB') {
+    stage('MVN DEPLOY') {
       steps {
-        sh 'mvn compile jib:build -DsendCredentialsOverHttp=true -Djib.httpTimeout=0';
+        sh 'mvn clean deploy -Dmaven.test.skip=true';
       }
     }
     stage('MVN SONARCUBE') {
