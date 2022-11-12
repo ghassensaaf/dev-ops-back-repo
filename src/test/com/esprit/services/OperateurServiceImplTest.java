@@ -45,8 +45,8 @@ public class OperateurServiceImplTest {
     List<Operateur> listOperateurs = new ArrayList<Operateur>() {
         {
             add(o1);
-            add(new Operateur(2L,"ahmed","fakhfakh","ahmed123"));
-            add(new Operateur(3L,"ghassen","saaf","ghassen123"));
+            add(o2);
+            add(o3);
         }
     };
 
@@ -55,5 +55,12 @@ public class OperateurServiceImplTest {
         Mockito.when(or.findAll()).thenReturn(listOperateurs);
         List<Operateur> listOperateurs2 = os.retrieveAllProduits();
         assertEquals(3, listOperateurs2.size());
+    }
+
+    @Test
+    public void testaddOperateur(){
+        Mockito.when(or.save(o1)).thenReturn(p1);
+        Produit o1 = os.addProduit(o1);
+        Mockito.verify(or, times(1)).save(Mockito.any(Operateur.class));
     }
 }
