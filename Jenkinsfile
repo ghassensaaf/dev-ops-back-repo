@@ -10,7 +10,6 @@ pipeline {
     }
     stage('MVN CLEAN') {
       steps {
-        sh 'sudo chmod 666 /var/run/docker.sock';
         sh 'java -version';
         sh 'mvn clean ';
       }
