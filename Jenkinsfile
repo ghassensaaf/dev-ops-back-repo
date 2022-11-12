@@ -17,8 +17,6 @@ pipeline {
     }
     stage('MVN TEST') {
       steps {
-        sh 'mvn --version';
-        sh 'java -version';
         sh 'mvn test ';
       }
     }
@@ -40,7 +38,7 @@ pipeline {
         sh 'mvn package sonar:sonar -Dsonar.login=admin -Dsonar.password=Za3maettal3ou';
       }
     }
-    
+
     stage('DOCKER Compose') {
       steps {
         echo 'docker compose stage';
