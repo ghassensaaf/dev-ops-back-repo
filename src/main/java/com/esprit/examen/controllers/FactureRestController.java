@@ -21,7 +21,7 @@ public class FactureRestController {
     IFactureService factureService;
 
     // http://localhost:8089/SpringMVC/facture/retrieve-all-factures
-    @GetMapping("/retrieve-all-factures")
+    @GetMapping("/retrieve-all-factures-v1.1.0")
     @ResponseBody
     public List<Facture> getFactures() {
         List<Facture> list = factureService.retrieveAllFactures();
