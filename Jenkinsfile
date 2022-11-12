@@ -13,12 +13,17 @@ pipeline {
                sh 'mvn clean'
             }
         }
+        stage('MavenTEST') {
+            steps {
+                sh 'mvn test ';
+            }
+        }
         stage('MavenCompile') {
             steps {
                sh 'mvn compile'
             }
         }
-        stage('MVN DEPLOY') {
+        stage('MavenDeploy') {
             steps {
                 sh 'mvn clean deploy -Dmaven.test.skip=true';
             }
