@@ -49,10 +49,33 @@ pipeline {
             }
         }
 
+        //stage("Nexus"){
+            //steps {
+           // nexusArtifactUploader artifacts: [[artifactId: 'tpAchatProject', classifier: '', file: 'target/tpAchatProject-1.0.jar', type: 'jar']], credentialsId: 'nexus3', groupId: 'com.esprit.examen', nexusUrl: '1.1.1.12:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nuget-hosted', version: '1.0'
+
+          //  }
+        //}
         stage("Nexus"){
-            steps {
-            nexusArtifactUploader artifacts: [[artifactId: 'tpAchatProject', classifier: '', file: 'target/tpAchatProject-1.0.jar', type: 'jar']], credentialsId: 'nexus3', groupId: 'com.esprit.examen', nexusUrl: '1.1.1.12:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'nuget-hosted', version: '1.0'
+                steps{
+                    script{
+                        def mavenPom = readMavenPom file:'pom.xml'
+
+            nexusArtifactUploader artifacts: [
+                 [artifactId: 'tpAchatProject',
+                        classifier: '',
+                        file: "target/tpAchatProject-${mavenPom.version}.jar",
+                         type: 'jar'],
+                ],
+                    credentialsId: 'nexus3',
+                   groupId: 'com.esprit.examen',
+                   nexusUrl: '192.168.1.7:8081',
+                   nexusVersion: 'nexus3',
+                   protocol: 'http',
+                   repository: 'tpAchatProjet',
+                    version: "${mavenPom.version}"
+                }
             }
-        }
+            }
+
     }
 }
