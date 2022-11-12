@@ -3,6 +3,7 @@ package com.esprit.examen.controllers;
 import java.util.Date;
 import java.util.List;
 
+import com.esprit.examen.entities.dto.ReglementDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +24,15 @@ public class ReglementRestController {
 
     @PostMapping("/add-reglement")
     @ResponseBody
-    public Reglement addReglement(@RequestBody Reglement r) {
-        return reglementService.addReglement(r);
+    public Reglement addReglement(@RequestBody ReglementDTO r) {
+        Reglement rr = new Reglement();
+        rr.setIdReglement(r.getIdReglement());
+        rr.setDateReglement(r.getDateReglement());
+        rr.setPayee(r.getPayee());
+        rr.setFacture(r.getFacture());
+        rr.setMontantPaye(r.getMontantPaye());
+        rr.setMontantRestant(r.getMontantRestant());
+        return reglementService.addReglement(rr);
     }
     @GetMapping("/retrieve-all-reglements")
     @ResponseBody
