@@ -63,4 +63,10 @@ public class OperateurServiceImplTest {
         Produit o1 = os.addProduit(o1);
         Mockito.verify(or, times(1)).save(Mockito.any(Operateur.class));
     }
+
+    @Test
+    public void testdeleteOperateur(){
+        os.deleteOperateur(1L);
+        Mockito.verify(or, times(1)).deleteById(1L);
+    }
 }
