@@ -70,7 +70,7 @@ pipeline {
                    nexusUrl: '1.1.1.12:8081',
                    nexusVersion: 'nexus3',
                    protocol: 'http',
-                   repository: 'tpAchatProjet',
+                   repository: 'nuget-hosted',
                     version: "1.0"
                 }
             }
