@@ -58,12 +58,12 @@ pipeline {
         stage("Nexus"){
                 steps{
                     script{
-                        def mavenPom = readMavenPom file:'pom.xml'
+                        pom = readMavenPom file: 'pom.xml'
 
             nexusArtifactUploader artifacts: [
                  [artifactId: 'tpAchatProject',
                         classifier: '',
-                        file: "target/tpAchatProject-${mavenPom.version}.jar",
+                        file: "target/tpAchatProject-${pom.version}.jar",
                          type: 'jar'],
                 ],
                     credentialsId: 'nexus3',
@@ -72,7 +72,7 @@ pipeline {
                    nexusVersion: 'nexus3',
                    protocol: 'http',
                    repository: 'tpAchatProjet',
-                    version: "${mavenPom.version}"
+                    version: "${pom.version}"
                 }
             }
             }
