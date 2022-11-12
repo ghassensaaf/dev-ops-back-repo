@@ -13,7 +13,7 @@ import io.swagger.annotations.Api;
 
 @RestController
 @Api(tags = "Gestion des factures")
-@RequestMapping("/facture")
+@RequestMapping("/v2/facture")
 @CrossOrigin("*")
 public class FactureRestController {
 
@@ -21,7 +21,7 @@ public class FactureRestController {
     IFactureService factureService;
 
     // http://localhost:8089/SpringMVC/facture/retrieve-all-factures
-    @GetMapping("/retrieve-all-factures-v1.1.0")
+    @GetMapping("/retrieve-all-factures")
     @ResponseBody
     public List<Facture> getFactures() {
         List<Facture> list = factureService.retrieveAllFactures();
