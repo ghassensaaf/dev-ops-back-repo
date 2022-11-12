@@ -35,7 +35,6 @@ public class ProduiServiceImplTest {
     Produit p =  new Produit(1L,"Ac12", "Produit1", 4, new Date(), new Date());
     Produit p1 = new Produit(2L,"Ac13", "Produit2", 5, new Date(), new Date());
     Produit p2 = new Produit(3L,"Ac14", "Produit3", 7, new Date(), new Date());
-    
     List<Produit> listProduits = new ArrayList<Produit>() {
         {
             add(p);
