@@ -20,6 +20,12 @@ pipeline {
       }
     }
 
+    stage('MVN DEPLOY') {
+      steps {
+        sh 'mvn clean deploy -Dmaven.test.skip=true';
+      }
+    }
+
   stage('Maven SonarQube') {
             steps {
                sh 'mvn clean package sonar:sonar -Dsonar.login=admin -Dsonar.password=root'
