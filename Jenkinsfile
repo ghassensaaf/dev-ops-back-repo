@@ -14,7 +14,7 @@ pipeline {
       }
     }
 
-      stage('MVN Compile') {
+    stage('MVN Compile') {
       steps {
         sh 'mvn compile';
       }
@@ -26,13 +26,13 @@ pipeline {
       }
     }
 
-  stage('Maven SonarQube') {
-            steps {
-               sh 'mvn clean package sonar:sonar -Dsonar.login=admin -Dsonar.password=root'
-            }
-        }
+    stage('Maven SonarQube') {
+      steps {
+          sh 'mvn clean package sonar:sonar -Dsonar.login=admin -Dsonar.password=root'
+      }
+    }
 
-     stage('DOCKER Compose') {
+    stage('DOCKER Compose') {
       steps {
         echo 'docker compose stage';
         sh 'docker-compose up -d'
