@@ -1,5 +1,5 @@
 #stage 1
-FROM node:latest as node
+FROM node:16.3.1-alpine
 WORKDIR /app
 COPY . .
 RUN npm install
