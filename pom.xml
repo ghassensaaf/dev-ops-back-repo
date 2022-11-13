@@ -166,10 +166,10 @@
                 <version>1.8.0</version>
                 <configuration>
 					<from> 
-						<image>openjdk:alpine</image> 
+						<image>openjdk:11</image> 
 					</from>
 					<to> 
-						<image>http://192.168.1.150:10001/repository/firstdockerrepository/tpachatproject2.0</image>
+						<image>http://192.168.1.150:10001/repository/firstdockerrepository/tpAchatProject:springapp</image>
 						<auth>
 							<username>admin</username>
 							<password>Za3maettal3ou</password>
