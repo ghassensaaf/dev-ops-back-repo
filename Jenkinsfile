@@ -9,12 +9,9 @@ pipeline {
       }
     }
 	  
- stage('Build Artifact - Maven') {
-			steps {
-				sh "mvn clean package -DskipTests=true"
-				archive 'target/*.jar'
-			      
-		
+ stage('Maven SonarQube') {
+      steps {
+          sh 'mvn clean package sonar:sonar -Dsonar.login=admin -Dsonar.password=emna22448208.'
       }
     }
       
