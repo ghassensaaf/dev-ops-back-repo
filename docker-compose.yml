@@ -3,8 +3,8 @@ version: '3'
 services: 
 
   mysqldb:
-    container_name: mysqldb
     image: mysql:5.6
+    container_name: mysqldb
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -33,4 +33,12 @@ services:
     restart: on-failure
     links:
       - mysqldb
+  frontend_app:
+    image: "saafghassen/facturefront:latest"
+    container_name: angular_app
+    ports:
+      - "4200:4200"
+    environment:
+      BACKEND_URL: 192.168.1.150:8089
+    restart: on-failure
 

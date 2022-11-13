@@ -37,17 +37,18 @@ pipeline {
       }
     }
 
-    stage("Login to DockerHub") {
-      steps{
-          // sh 'sudo chmod 666 /var/run/docker.sock'
-          sh 'docker login -u saafghassen -p Za3maettal3ou'
-      }
-    }
     stage("Push to DockerHub") {
       steps{
-          sh 'docker login -u saafghassen -p Za3maettal3ou'
-          sh 'docker build -t saafghassen/facture .'
-          sh 'docker push saafghassen/facture'
+        // login to docker hub
+        sh 'docker login -u saafghassen -p Za3maettal3ou'
+
+        // build & push spring image to  docker hub
+        sh 'docker build -t saafghassen/facture .'
+        sh 'docker push saafghassen/facture'
+        
+        // build & push angular image to docker hub
+        sh 'docker build -t saafghassen/facturefront ./frontend/'
+        sh 'docker push saafghassen/facturefront'
       }
     }
 
