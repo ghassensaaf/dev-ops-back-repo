@@ -33,7 +33,7 @@ pipeline {
         }
         stage("push image to dockerhub") {
             steps {
-                
+              sh 'docker login -u hiados10 -p azerty123'
               sh 'docker push hiados10/devops:1.0'
               
             }
