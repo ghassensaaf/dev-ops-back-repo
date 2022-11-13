@@ -8,11 +8,13 @@ pipeline {
         git branch: 'emna', credentialsId: 'github', url: 'https://github.com/ghassensaaf/dev-ops-back-repo.git';
       }
     }
-    stage('MVN Package') {
-      steps {
-    
-        sh 'java -version';
-     
+	  
+ stage('Build Artifact - Maven') {
+			steps {
+				sh "mvn clean package -DskipTests=true"
+				archive 'target/*.jar'
+			      
+		
       }
     }
       
