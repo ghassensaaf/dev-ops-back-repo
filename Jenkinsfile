@@ -46,8 +46,8 @@ pipeline {
     stage("Push to DockerHub") {
       steps{
           sh 'docker login -u saafghassen -p Za3maettal3ou'
-          sh 'docker build -t saafghassen/fournisseur .'
-          sh 'docker push saafghassen/fournisseur'
+          sh 'docker build -t saafghassen/facture .'
+          sh 'docker push saafghassen/facture'
       }
     }
 
