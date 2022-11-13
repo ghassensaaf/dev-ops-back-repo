@@ -56,8 +56,7 @@ public class ProduiServiceImplTest {
     public void testaddProduit(){
         Mockito.when(produitRepository.save(p)).thenReturn(p);
         Produit prod = produitServiceImpl.addProduit(p);
-        Mockito.verify(produitRepository, times(1)).save(Mockito.any(Produit.class));
-        
+        Mockito.verify(produitRepository, times(1)).save(Mockito.any(Produit.class));    
     }
 
     @Test
