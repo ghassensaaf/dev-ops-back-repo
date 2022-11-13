@@ -27,7 +27,7 @@ pipeline {
         stage("docker build image") {
             steps {
                 
-              docker build -t hiados10/devops:1.0.0
+              sh "docker build -t hiados10/devops:1.0"
                
             }
         }
