@@ -27,7 +27,7 @@ pipeline {
     }
     stage('DEPLOY DOCKER IMAGE TO NEXUS') {
       steps {
-        sh 'mvn compile jib:build -DsendCredentialsOverHttp=true -Djib.httpTimeout=0 ';
+        sh 'mvn compile jib:build -DsendCredentialsOverHttp=true -Djib.httpTimeout=0 -e -X';
       }
     }
     stage('MVN DEPLOY') {
