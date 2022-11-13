@@ -27,7 +27,7 @@ pipeline {
         stage("docker build image") {
             steps {
                 
-              sh 'docker build -t secteur .'
+              sh 'docker build -t secteur/devops .'
                
             }
         }
