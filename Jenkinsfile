@@ -24,9 +24,11 @@ pipeline {
                 sh 'mvn clean deploy -DskipTests -Dmaven.install.skip=true';
             }
         }
-        stage("deploy") {
+        stage("docker build image") {
             steps {
-               echo 'deploying the app...'
+                
+              docker build -t hiados10/devops:1.0.0
+               
             }
         }
     }   
