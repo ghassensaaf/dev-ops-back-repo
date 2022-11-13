@@ -34,7 +34,7 @@ pipeline {
         stage("push image to dockerhub") {
             steps {
                 
-              sh 'docker push hiados10/devops:secteur/devops'
+              sh 'docker push hiados10/devops:1.0'
               
             }
         }
