@@ -15,7 +15,7 @@ pipeline {
       }
     }
       
-      stage('SonarQube + JacOcO Analysis') {
+    /*  stage('SonarQube + JacOcO Analysis') {
 			steps {
 				sh "mvn  sonar:sonar -Dsonar.projectKey=devops  -Dsonar.host.url=http://192.168.33.10:9000  -Dsonar.login=jenkins"
 			}
@@ -24,7 +24,7 @@ pipeline {
 					jacoco execPattern: 'target/jacoco.exec'
 				       }    
 			    } 
-		 }  
+		 }  */
     
 	  
 	  
