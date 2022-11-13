@@ -27,7 +27,7 @@ pipeline {
     }
     stage('DEPLOY DOCKER IMAGE TO NEXUS') {
       steps {
-        sh 'mvn compile jib:build -DsendCredentialsOverHttp=true -Djib.httpTimeout=0 -e -X';
+        sh 'mvn com.google.cloud.tools:jib-maven-plugin:1.3.0:build -DsendCredentialsOverHttp=true -Djib.httpTimeout=0 -e -X';
       }
     }
     stage('MVN DEPLOY') {
