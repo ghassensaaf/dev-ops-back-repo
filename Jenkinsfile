@@ -37,16 +37,6 @@ pipeline {
       }
     }
 
-    stage("Push be-i to DockerHub") {
-      steps{
-        // login to docker hub
-        sh 'docker login -u saafghassen -p Za3maettal3ou'
-
-        // build & push spring image to  docker hub
-        sh 'docker build -t saafghassen/facture .'
-        sh 'docker push saafghassen/facture'
-      }
-    }
 
     stage("Push fe-i to DockerHub") {
       steps{
@@ -56,6 +46,17 @@ pipeline {
         // build & push angular image to docker hub
         sh 'docker build -t saafghassen/facturefront ./frontend/'
         sh 'docker push saafghassen/facturefront'
+      }
+    }
+    
+    stage("Push be-i to DockerHub") {
+      steps{
+        // login to docker hub
+        sh 'docker login -u saafghassen -p Za3maettal3ou'
+
+        // build & push spring image to  docker hub
+        sh 'docker build -t saafghassen/facture .'
+        sh 'docker push saafghassen/facture'
       }
     }
 
