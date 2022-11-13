@@ -12,7 +12,7 @@ pipeline {
       steps {
     
         sh 'java -version';
-        sh 'mvn package -e';
+     
       }
     }
   }
