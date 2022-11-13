@@ -8,6 +8,8 @@ pipeline {
         git branch: 'emna', credentialsId: 'github', url: 'https://github.com/ghassensaaf/dev-ops-back-repo.git';
       }
     }
+  }
+    }
 	/*  
 	  stage('MVN Clean') {
       steps {
