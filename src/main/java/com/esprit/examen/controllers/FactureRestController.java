@@ -13,7 +13,7 @@ import io.swagger.annotations.Api;
 
 @RestController
 @Api(tags = "Gestion des factures")
-@RequestMapping("/v2/facture")
+@RequestMapping("/v3/facture")
 @CrossOrigin("*")
 public class FactureRestController {
 
