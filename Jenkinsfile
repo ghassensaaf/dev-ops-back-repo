@@ -30,20 +30,13 @@ pipeline {
       steps {
           sh 'mvn clean package sonar:sonar -Dsonar.login=admin -Dsonar.password=emna22448208.'
       }
-    }	  
-	   stage('Docker compose') {
-      		      steps {
-         parallel(
-           "Docker compose": {
-               sh 'docker-compose up '
-           },
-           "Delete running containers": {
-		       sh 'sleep 2m '
-               sh 'docker rm -f ci-spring ci-db ci-angular '
-           }
-         )
-       }
-  }
+    }	 
+	  stage('DOCKER Compose') {
+      steps {
+        echo 'docker compose stage';
+        sh 'docker-compose up -d'
+      }
+    }
 	 
   }
 }
