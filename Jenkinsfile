@@ -37,6 +37,20 @@ pipeline {
       }
     }
 
+    stage("Login to DockerHub") {
+      steps{
+          // sh 'sudo chmod 666 /var/run/docker.sock'
+          sh 'docker login -u saafghassen -p Za3maettal3ou'
+      }
+    }
+    stage("Push to DockerHub") {
+      steps{
+          sh 'docker login -u saafghassen -p Za3maettal3ou'
+          sh 'docker build -t saafghassen/fournisseur .'
+          sh 'docker push saafghassen/fournisseur'
+      }
+    }
+
     stage('DOCKER Compose') {
       steps {
         echo 'docker compose stage';
