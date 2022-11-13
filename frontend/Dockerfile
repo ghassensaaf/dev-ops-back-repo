@@ -1,5 +1,5 @@
 #stage 1
-FROM node:16.3.1-alpine
+FROM node:16.3.1
 WORKDIR /app
 COPY . .
 RUN npm install
