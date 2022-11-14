@@ -1,7 +1,7 @@
 # Stage 1: Compile and Build angular codebase
 
 # Use official node image as the base image
-FROM node:12.14.1-alpine as build
+FROM node:16.13.1-alpine as build
 
 # Set the working directory
 WORKDIR /usr/local/app
@@ -22,7 +22,7 @@ RUN npm run build
 FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents.
-COPY --from=build /usr/local/app/dist/sample-angular-app /usr/share/nginx/html
+COPY --from=build /usr/local/app/dist/crudtuto-front /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
