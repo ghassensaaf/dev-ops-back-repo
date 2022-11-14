@@ -67,7 +67,7 @@ pipeline {
                 ],
                     credentialsId: 'nexus3',
                    groupId: 'com.esprit.examen',
-                   nexusUrl: '1.1.1.12:8081',
+                   nexusUrl: '192.168.25.109:8081',
                    nexusVersion: 'nexus3',
                    protocol: 'http',
                    repository: 'nuget-hosted',
