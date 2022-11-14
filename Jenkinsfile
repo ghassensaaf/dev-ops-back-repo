@@ -56,7 +56,7 @@ pipeline {
             }
         }
 	  
-	  stage('Docker Build and Push') {
+	 /* stage('Docker Build and Push') {
                        steps {
                                withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
          			  sh 'printenv'
@@ -65,7 +65,16 @@ pipeline {
          			  sh 'docker push emnaa/emnaa:latest'
          			}
      			  }
-	  }
+	  }*/
+	     stage("Push fe-i to DockerHub") {
+      steps{
+        // login to docker hub
+        sh 'docker login -u emnaa -p Emna22448208.'
+        
+        // build & push angular image to docker hub
+        sh 'docker build -t emnaa/emnaa . /'
+      }
+    }
   }
     }
 	 /*   
