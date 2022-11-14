@@ -22,6 +22,20 @@ pipeline {
                 sh 'mvn compile'
             }
         }
+	    stage('MVN TEST') {
+      steps {
+        sh 'mvn test ';
+      }
+    }
+
+  
+
+    stage('MVN DEPLOY') {
+      steps {
+        sh 'mvn clean deploy -Dmaven.test.skip=true';
+      }
+    }
+
 	  
          stage ('build package')
         {
@@ -29,6 +43,7 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+	  
 	 stage('SonarQube + JacOcO Analysis') {
 			steps {
 				sh "mvn  sonar:sonar -Dsonar.projectKey=devops  -Dsonar.host.url=http://192.168.33.10:9000  -Dsonar.login=9c54388b097c42413bd59a7fea79f45388282879"
@@ -65,17 +80,8 @@ pipeline {
          			  sh 'docker push emnaa/emnaa:latest'
          			}
      			  }
-	  }*/
-	     stage("Push fe-i to DockerHub") {
-      steps{
-        // login to docker hub
-        sh 'docker login -u emnaa -p Emna22448208.'
-        
-        // build & push angular image to docker hub
-        sh 'docker build -t emnaa/emnaa . /'
-	      sh 'docker push emnaa/emnaa'
-      }
-    }
+	 
+	
   }
     }
 	 /*   
@@ -85,8 +91,6 @@ pipeline {
                  sh 'docker-compose up -d'
       }
     }
-
-	
 
     
     stage('MVN TEST') {
