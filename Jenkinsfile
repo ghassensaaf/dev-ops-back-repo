@@ -62,7 +62,7 @@ pipeline {
          			  sh 'printenv'
         			  sh 'docker build -t emnaa/emnaa .'
 	 			  sh 'docker tag emnaa/emnaa emnaa/emnaa:latest'
-         			  sh 'docker push emna/emna:latest'
+         			  sh 'docker push emnaa/emnaa:latest'
          			}
      			  }
 	  }
