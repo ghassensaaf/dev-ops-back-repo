@@ -38,7 +38,7 @@ pipeline {
       }
     }
 
-    stage("Push Frontimg to DockerHub") {
+    stage("build  Frontimg ") {
       steps{
         // login to docker hub
         sh 'docker login -u ahmedfakh -p cssahmed123'
@@ -49,7 +49,7 @@ pipeline {
       }
     }
     
-    stage("Push  backimg to DockerHub") {
+    stage("build  backimg ") {
       steps{
         // login to docker hub
         sh 'docker login -u ahmedfakh -p cssahmed123'

@@ -37,9 +37,9 @@ services:
     links:
       - mysqldb
 
-    frontend_app:
-      image: "ahmedfakh/produit_front"
-      container_name: angular_app
-      ports:
+  frontend_app:
+    image: "ahmedfakh/produit_front"
+    container_name: angular_app
+    ports:
       - "4200:4200"
-      restart: on-failure
+    restart: on-failure
