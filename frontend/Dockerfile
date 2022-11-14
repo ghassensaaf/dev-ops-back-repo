@@ -7,7 +7,7 @@ FROM node:16.13.1-alpine as build
 WORKDIR /app
 # install and cache app dependencies
 COPY package.json /app/package.json
-RUN npm install
+RUN npm ic
 RUN npm install -g @angular/cli@7.3.10
 
 # add app
