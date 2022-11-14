@@ -16,7 +16,7 @@ pipeline {
       }
     }
 	  
-         stage ('MVN compile')
+         stage ('MVN compiler')
         {
          steps{
                 sh 'mvn compile'
@@ -30,19 +30,8 @@ pipeline {
 
   
 
-    stage('MVN DEPLOY') {
-      steps {
-        sh 'mvn clean deploy -Dmaven.test.skip=true';
-      }
-    }
 
-	  
-         stage ('build package')
-        {
-         steps{
-                sh 'mvn clean package'
-            }
-        }
+
 	  
 	 stage('SonarQube ') {
 			steps {
