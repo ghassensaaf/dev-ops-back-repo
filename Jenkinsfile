@@ -38,6 +38,31 @@ pipeline {
       }
     }
 
+
+
+    stage("Push Frontimg to DockerHub") {
+      steps{
+        // login to docker hub
+        sh 'docker login -u ahmedfakh -p cssahmed123'
+        
+        // build & push angular image to docker hub
+        sh 'docker build -t ahmedfakh/produit_front ./frontend/'
+       
+      }
+    }
+    
+    stage("Push  backimg to DockerHub") {
+      steps{
+        // login to docker hub
+        sh 'docker login -u ahmedfakh -p cssahmed123'
+
+        // build & push spring image to  docker hub
+        sh 'docker build -t ahmedfakh/produit_back .'
+       
+      }
+    }
+
+
     stage('DOCKER Compose') {
       steps {
         echo 'docker compose stage';
