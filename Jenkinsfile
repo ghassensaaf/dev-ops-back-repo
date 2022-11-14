@@ -53,11 +53,8 @@ pipeline {
             }
         }
 	  
-	  	
-  }
-    }
 
-/*
+
 	  stage('Docker Build and Push') {
                        steps {
                                withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
@@ -72,48 +69,19 @@ pipeline {
 	  }
 	 
 
-	 /*   
-           stage('DOCKER Compose') {
-             steps {
-             echo 'docker compose stage';
-                 sh 'docker-compose up -d'
-      }
-    }
+	
+     
 
     
-    stage('MVN TEST') {
-      steps {
-        sh 'mvn test ';
-      }
-    }
 
   
 
-    stage('MVN DEPLOY') {
-      steps {
-        sh 'mvn clean deploy -Dmaven.test.skip=true';
-      }
-    }
-
-  
 	    
-	  stage('DOCKER Compose') {
-      steps {
-        echo 'docker compose stage';
-        sh 'docker-compose up -d'
-      }
-    }
+
+
+
+
+  
 	
-
-
-
-   /*stage('Build Artifact - Maven') {
-			steps {
-				sh "mvn clean package -DskipTests=true"
-				archive 'target/*.jar'
-			      }
-		}
-	
- */
-	  
+  
 	
