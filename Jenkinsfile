@@ -8,32 +8,49 @@ pipeline {
         git branch: 'emna', credentialsId: 'github', url: 'https://github.com/ghassensaaf/dev-ops-back-repo.git';
       }
     }
-	   stage ('MVN Clean')
-        {
-         steps{
-                sh 'mvn clean install -DskipTests'
-            }
-        }
+	  
+
+		  	  stage('MVN Clean') {
+      steps {
+        sh 'mvn clean';
+      }
+    }
+	  
          stage ('MVN compile')
         {
          steps{
                 sh 'mvn compile'
             }
         }
+	  
          stage ('build package')
         {
          steps{
                 sh 'mvn clean package'
             }
         }
+	     stage('Maven SonarQube') {
+      steps {
+          sh 'mvn clean package sonar:sonar -Dsonar.login=admin -Dsonar.password=root'
+      }
+    }
+	    
+	  stage('DOCKER Compose') {
+      steps {
+        echo 'docker compose stage';
+        sh 'docker-compose up -d'
+      }
+    }
+	   stage('Nexus') {
+			steps {
+				//sh 'mvn clean deploy -DskipTests'
+				sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
+			}
+		} 
   }
     }
 	/*  
-	  stage('MVN Clean') {
-      steps {
-        sh 'mvn clean';
-      }
-    }
+
     
     stage('MVN TEST') {
       steps {
@@ -41,11 +58,7 @@ pipeline {
       }
     }
 
-    stage('MVN Compile') {
-      steps {
-        sh 'mvn compile';
-      }
-    }
+  
 
     stage('MVN DEPLOY') {
       steps {
