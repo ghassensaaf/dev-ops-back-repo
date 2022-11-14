@@ -76,4 +76,5 @@ public class OperateurServiceImplTest {
         Produit op1 = os.updateOperateur(o1);
         Mockito.verify(or, times(1)).save(Mockito.any(Operateur.class));
     }
+    
 }
