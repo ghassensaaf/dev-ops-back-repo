@@ -45,7 +45,7 @@ pipeline {
         
         // build & push angular image to docker hub
         sh 'docker build -t saafghassen/facturefront ./frontend/'
-        sh 'docker push saafghassen/facturefront'
+        // sh 'docker push saafghassen/facturefront'
       }
     }
     
