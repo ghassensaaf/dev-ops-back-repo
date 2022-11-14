@@ -54,7 +54,17 @@ pipeline {
             echo "Nexus";
                 sh 'mvn clean deploy -DskipTests -Dmaven.install.skip=true';
             }
-        }	  
+        }
+	  
+	  stage('Docker Build and Push') {
+                       steps {
+                               withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+         			  sh 'printenv'
+        			  sh 'docker build -t emnaa/emnaa .'
+	 			  sh 'docker tag emnaa/emnaa emnaa/emnaa:latest'
+         			  sh 'docker push emna/emna:latest'
+         			}
+     			  }
   }
     }
 	 /*   
