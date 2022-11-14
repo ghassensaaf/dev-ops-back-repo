@@ -55,7 +55,7 @@ pipeline {
         sh 'docker login -u saafghassen -p Za3maettal3ou'
 
         // build & push spring image to  docker hub
-        sh 'docker build -t saafghassen/facture . --no-cache'
+        sh 'docker build -t saafghassen/facture:v4 . --no-cache'
         // sh 'docker push saafghassen/facture'
       }
     }

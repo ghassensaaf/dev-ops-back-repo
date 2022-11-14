@@ -18,7 +18,7 @@ services:
       - /home/mysql/data:/var/lib/mysql --user 1000
 
   app:
-    image: "saafghassen/facture:latest"
+    image: "saafghassen/facture:v4"
     container_name: spring_app
     ports:
       - "8089:8089"
