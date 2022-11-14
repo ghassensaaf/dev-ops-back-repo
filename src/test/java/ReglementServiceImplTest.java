@@ -20,7 +20,7 @@ import static org.junit.Assert.assertNotNull;
 @SpringBootTest(classes = ReglementServiceImplTest.class)
 @ExtendWith(MockitoExtension.class)
 @RunWith(MockitoJUnitRunner.class)
-public class ReglementServiceImplTest {
+class ReglementServiceImplTest {
 
     ReglementRepository reglementRepository = Mockito.mock(ReglementRepository.class);
 
@@ -41,7 +41,7 @@ public class ReglementServiceImplTest {
     };
 
     @Test
-    public void getReglement() {
+    void getReglement() {
         Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(this.op));
         Reglement ope = reglementService.retrieveReglement((long) 2);
         assertNotNull(ope);
@@ -49,7 +49,7 @@ public class ReglementServiceImplTest {
     }
 
     @Test
-    public void addReglement() {
+    void addReglement() {
         Reglement op = Reglement.builder().dateReglement(new Date()).idReglement(0L).payee(true).montantPaye(12).montantRestant(3).build();
         Mockito.when(reglementRepository.save(op)).thenReturn(op);
         Reglement oyp = reglementService.addReglement(op);
