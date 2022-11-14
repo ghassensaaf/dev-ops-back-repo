@@ -52,7 +52,8 @@ pipeline {
                 sh 'mvn clean deploy -DskipTests -Dmaven.install.skip=true';
             }
         }
-	  
+  }
+}
 
 
 	/*  stage('Docker Build and Push') {
