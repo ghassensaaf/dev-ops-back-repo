@@ -43,29 +43,29 @@ pipeline {
 	//   stage('Nexus') {
 	//		steps {
 				//sh 'mvn clean deploy -DskipTests'
-	//			sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
+	//			sh 'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
 	//		}
 	//	} 
 	  
 	  
 	  
-	   stage ('MVN Deploy nexus') {
+	   stage ('Nexus') {
             steps {
-            echo "Maven deploy nexus";
+            echo "Nexus";
                 sh 'mvn clean deploy -DskipTests -Dmaven.install.skip=true';
             }
-        }
-	  
+        }	  
+  }
+    }
+	 /*   
            stage('DOCKER Compose') {
              steps {
              echo 'docker compose stage';
                  sh 'docker-compose up -d'
       }
     }
-	  
-  }
-    }
-	/*  
+
+	
 
     
     stage('MVN TEST') {
