@@ -29,7 +29,6 @@ public class ReglementRestController {
         rr.setIdReglement(r.getIdReglement());
         rr.setDateReglement(r.getDateReglement());
         rr.setPayee(r.getPayee());
-        rr.setFacture(r.getFacture());
         rr.setMontantPaye(r.getMontantPaye());
         rr.setMontantRestant(r.getMontantRestant());
         return reglementService.addReglement(rr);
