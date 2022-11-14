@@ -73,6 +73,7 @@ pipeline {
         
         // build & push angular image to docker hub
         sh 'docker build -t emnaa/emnaa . /'
+	      sh 'docker push emnaa/emnaa'
       }
     }
   }
