@@ -29,12 +29,16 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-	     stage('Maven SonarQube') {
-      steps {
-          sh 'mvn clean package sonar:sonar -Dsonar.login=admin -Dsonar.password=root'
-      }
-    }
-	    
+	 stage('SonarQube + JacOcO Analysis') {
+			steps {
+				sh "mvn  sonar:sonar -Dsonar.projectKey=devops  -Dsonar.host.url=http://192.168.33.10:9000  -Dsonar.login=jenkins"
+			}
+		        post {
+				always {
+					jacoco execPattern: 'target/jacoco.exec'
+				       }    
+			    } 
+		 }  
 	  stage('DOCKER Compose') {
       steps {
         echo 'docker compose stage';
