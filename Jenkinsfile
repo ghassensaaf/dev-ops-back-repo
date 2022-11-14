@@ -34,7 +34,7 @@ pipeline {
             }
         }
 
-        stage("Push fe-i to DockerHub") {
+        stage("build frontend") {
             steps{
                 // login to docker hub
                 sh 'docker login -u abdelmoementrabelsi -p viscabarca123'
@@ -45,7 +45,7 @@ pipeline {
             }
         }
             
-        stage("Push be-i to DockerHub") {
+        stage("build backend") {
             steps{
                 // login to docker hub
                 sh 'docker login -u abdelmoementrabelsi -p viscabarca123'
