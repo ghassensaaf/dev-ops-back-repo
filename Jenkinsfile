@@ -40,16 +40,26 @@ pipeline {
 			    } 
 		 }  
 	  
-	   stage('Nexus') {
-			steps {
+	//   stage('Nexus') {
+	//		steps {
 				//sh 'mvn clean deploy -DskipTests'
-				sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
-			}
-		} 
-	  stage('DOCKER Compose') {
-      steps {
-        echo 'docker compose stage';
-        sh 'docker-compose up -d'
+	//			sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
+	//		}
+	//	} 
+	  
+	  
+	  
+	   stage ('MVN Deploy nexus') {
+            steps {
+            echo "Maven deploy nexus";
+                sh 'mvn clean deploy -DskipTests -Dmaven.install.skip=true';
+            }
+        }
+	  
+           stage('DOCKER Compose') {
+             steps {
+             echo 'docker compose stage';
+                 sh 'docker-compose up -d'
       }
     }
 	  
@@ -72,11 +82,7 @@ pipeline {
       }
     }
 
-    stage('Maven SonarQube') {
-      steps {
-          sh 'mvn clean package sonar:sonar -Dsonar.login=admin -Dsonar.password=root'
-      }
-    }
+  
 	    
 	  stage('DOCKER Compose') {
       steps {
@@ -84,15 +90,8 @@ pipeline {
         sh 'docker-compose up -d'
       }
     }
-	   stage('Nexus') {
-			steps {
-				//sh 'mvn clean deploy -DskipTests'
-				sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
-			}
-		} 
-	 
-  }
-}
+	
+
 
 
    /*stage('Build Artifact - Maven') {
@@ -101,22 +100,7 @@ pipeline {
 				archive 'target/*.jar'
 			      }
 		}
-	  
-	  stage('SonarQube + JacOcO Analysis') {
-			steps {
-				sh "mvn  sonar:sonar -Dsonar.projectKey=devops  -Dsonar.host.url=http://192.168.33.10:9000  -Dsonar.login=jenkins"
-			}
-		        post {
-				always {
-					jacoco execPattern: 'target/jacoco.exec'
-				       }    
-			    } 
-		 }   
-	  
-  stage('Maven SonarQube') {
-      steps {
-          sh 'mvn clean package sonar:sonar -Dsonar.login=admin -Dsonar.password=emna22448208.'
-      }
-    }	 */
+	
+ */
 	  
 	
