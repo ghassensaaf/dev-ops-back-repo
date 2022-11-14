@@ -39,18 +39,20 @@ pipeline {
 				       }    
 			    } 
 		 }  
-	  stage('DOCKER Compose') {
-      steps {
-        echo 'docker compose stage';
-        sh 'docker-compose up -d'
-      }
-    }
+	  
 	   stage('Nexus') {
 			steps {
 				//sh 'mvn clean deploy -DskipTests'
 				sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
 			}
 		} 
+	  stage('DOCKER Compose') {
+      steps {
+        echo 'docker compose stage';
+        sh 'docker-compose up -d'
+      }
+    }
+	  
   }
     }
 	/*  
