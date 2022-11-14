@@ -80,6 +80,7 @@ pipeline {
          			  sh 'docker push emnaa/emnaa:latest'
          			}
      			  }
+	  }
 	 
 	
   }
