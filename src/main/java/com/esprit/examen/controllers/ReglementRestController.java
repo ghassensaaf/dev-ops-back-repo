@@ -44,21 +44,4 @@ public class ReglementRestController {
     public Reglement retrieveReglement(@PathVariable("reglement-id") Long reglementId) {
         return reglementService.retrieveReglement(reglementId);
     }
-
-    @GetMapping("/retrieveReglementByFacture/{facture-id}")
-    @ResponseBody
-    public List<Reglement> retrieveReglementByFacture(@PathVariable("facture-id") Long factureId) {
-        return reglementService.retrieveReglementByFacture(factureId);
-    }
-
-    @GetMapping(value = "/getChiffreAffaireEntreDeuxDate/{startDate}/{endDate}")
-    public float getChiffreAffaireEntreDeuxDate(
-            @PathVariable(name = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
-            @PathVariable(name = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate) {
-        try {
-            return reglementService.getChiffreAffaireEntreDeuxDate(startDate, endDate);
-        } catch (Exception e) {
-            return 0;
-        }
-    }
 }

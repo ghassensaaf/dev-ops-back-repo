@@ -1,6 +1,5 @@
 package com.esprit.examen.services;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,16 +29,6 @@ public class ReglementServiceImpl implements IReglementService {
 	@Override
 	public Reglement retrieveReglement(Long id) {
 		return reglementRepository.findById(id).orElse(null);
-	}
-
-	@Override
-	public List<Reglement> retrieveReglementByFacture(Long idFacture) {
-		return  reglementRepository.retrieveReglementByFacture(idFacture);
-	}
-
-	@Override
-	public float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate) {
-		return reglementRepository.getChiffreAffaireEntreDeuxDate( startDate, endDate);
 	}
 
 }

@@ -40,7 +40,7 @@ public class Facture implements Serializable {
     @ManyToOne
     @JsonIgnore
     private Fournisseur fournisseur;
-    @OneToMany(mappedBy="facture")
+    @OneToMany()
     @JsonIgnore
     private Set<Reglement> reglements;
 
