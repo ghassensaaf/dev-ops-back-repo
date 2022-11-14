@@ -44,7 +44,7 @@ pipeline {
         sh 'docker login -u saafghassen -p Za3maettal3ou'
         
         // build & push angular image to docker hub
-        sh 'docker build -t saafghassen/facturefront ./frontend/'
+        sh 'docker build -t saafghassen/facturefront ./frontend/ --no-cache'
         // sh 'docker push saafghassen/facturefront'
       }
     }
@@ -56,7 +56,7 @@ pipeline {
 
         // build & push spring image to  docker hub
         sh 'docker build -t saafghassen/facture . --no-cache'
-        sh 'docker push saafghassen/facture'
+        // sh 'docker push saafghassen/facture'
       }
     }
 
